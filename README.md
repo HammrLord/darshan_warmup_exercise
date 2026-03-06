@@ -15,8 +15,12 @@ python generate_data.py
 # This requires sudo and will prompt for your password on first run.
 python benchmark.py
 
-# To bypass sudo (faster, but measures warm-cache performance — less accurate):
+# Drop cache without sudo (requires passwordless root or running as root):
 python benchmark.py --no-sudo
+
+# Skip cache drop entirely (warm-cache, faster to run, less accurate):
+python benchmark.py --no-drop-cache
+
 ```
 
 Results are written to `results/benchmark_results.json` and `results/benchmark_results.png`.
