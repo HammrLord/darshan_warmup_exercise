@@ -1,19 +1,18 @@
-# PyTorch DataLoader Microbenchmark
+# PyTorch DataLoader Microbenchmark Submission
 
 Benchmarks data loading throughput and scaling efficiency for a synthetic dataset across `num_workers = {1, 2, 4, 8}`.
 
 ## Reproduce
 
 ```bash
-# 1. Environment
-python -m venv .venv && source .venv/bin/activate
+# 1. Environment & Data Generation
 pip install -r requirements.txt
-
-# 2. Generate dataset (~6 GB, takes a few minutes)
 python generate_data.py --output-dir data/synthetic
 
-# 3. Run benchmark
-python benchmark.py --data-dir data/synthetic
+# 2. Run benchmark
+# By default, this prompts for sudo to drop the OS cache before each run.
+# To bypass the sudo prompt (less accurate, but easier to run):
+python benchmark.py --data-dir data/synthetic --no-sudo
 ```
 
 Results are written to `results/benchmark_results.json` and `results/benchmark_results.png`.
