@@ -213,25 +213,20 @@ def save_plot(results: dict[str, list[dict]], output_dir: str):
 
 def main():
     parser = argparse.ArgumentParser(description="Benchmark DataLoader throughput")
-    parser.add_argument("--data-dir", default="data/synthetic")
-    parser.add_argument("--batch-size", type=int, default=64)
-    parser.add_argument("--workers", type=int, nargs="+", default=[1, 2, 4, 8])
-    parser.add_argument("--seed", type=int, default=27)
-    parser.add_argument("--output-dir", default="results")
     parser.add_argument("--no-drop-cache", action="store_true", help="Disable dropping OS cache between runs (fast, but inaccurate)")
     parser.add_argument("--no-sudo", action="store_true", help="Do not use sudo when dropping cache (assumes you have root or passwordless sudo)")
     args = parser.parse_args()
 
     results = run_benchmark(
-        args.data_dir, 
-        args.batch_size, 
-        args.workers, 
-        args.seed,
+        data_dir="data/synthetic", 
+        batch_size=64, 
+        worker_counts=[1, 2, 4, 8], 
+        seed=27,
         drop_cache=not args.no_drop_cache,
         use_sudo=not args.no_sudo
     )
-    save_json(results, args.output_dir)
-    save_plot(results, args.output_dir)
+    save_json(results, "results")
+    save_plot(results, "results")
 
 
 if __name__ == "__main__":

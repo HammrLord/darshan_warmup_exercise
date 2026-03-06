@@ -80,17 +80,15 @@ def generate_dataset(output_dir: str, n_shards: int, feature_dim: int, num_class
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Generate synthetic dataset")
-    parser.add_argument("--output-dir", default="data/synthetic")
-    parser.add_argument("--n-shards", type=int, default=12)
-    parser.add_argument("--feature-dim", type=int, default=32768)
-    parser.add_argument("--num-classes", type=int, default=10)
-    parser.add_argument("--seed", type=int, default=27)
-    args = parser.parse_args()
+    output_dir = "data/synthetic"
+    n_shards = 12
+    feature_dim = 32768
+    num_classes = 10
+    seed = 27
 
-    print(f"Generating dataset → {args.output_dir}")
-    print(f"  Shards: {args.n_shards}, Feature dim: {args.feature_dim}, Classes: {args.num_classes}, Seed: {args.seed}\n")
-    generate_dataset(args.output_dir, args.n_shards, args.feature_dim, args.num_classes, args.seed)
+    print(f"Generating dataset → {output_dir}")
+    print(f"  Shards: {n_shards}, Feature dim: {feature_dim}, Classes: {num_classes}, Seed: {seed}\n")
+    generate_dataset(output_dir, n_shards, feature_dim, num_classes, seed)
 
 
 if __name__ == "__main__":

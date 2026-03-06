@@ -7,12 +7,12 @@ Benchmarks data loading throughput and scaling efficiency for a synthetic datase
 ```bash
 # 1. Environment & Data Generation
 pip install -r requirements.txt
-python generate_data.py --output-dir data/synthetic
+python generate_data.py
 
 # 2. Run benchmark
 # By default, this prompts for sudo to drop the OS cache before each run.
 # To bypass the sudo prompt (less accurate, but easier to run):
-python benchmark.py --data-dir data/synthetic --no-sudo
+python benchmark.py --no-sudo
 ```
 
 Results are written to `results/benchmark_results.json` and `results/benchmark_results.png`.
